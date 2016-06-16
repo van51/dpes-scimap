@@ -80,7 +80,7 @@ void DPESScIMAP::filterNearestNeighbors(int** euclideanNNs) {
 	scores.resize(numberOfEuclideanNN);
 	for (int i=0; i<numberOfConfigurations; i++) {
 		for (int j=0; j<numberOfEuclideanNN; j++) {
-			scores[j] = nnScore(j, LRMSD::computeRMSD(confs[i], confs[euclideanNNs[i][j]]));
+			scores[j] = nnScore(euclideanNNs[i][j], LRMSD::computeRMSD(confs[i], confs[euclideanNNs[i][j]]));
 		}
 		sort(scores.begin(), scores.end(), scoreComparison);
 		for (int j=0; j<numberOfRMSDNN; j++) {
